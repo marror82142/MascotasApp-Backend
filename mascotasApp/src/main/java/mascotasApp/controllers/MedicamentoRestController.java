@@ -26,9 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import mascotasApp.models.entity.Medicamento;
-import mascotasApp.models.entity.Usuario;
 import mascotasApp.models.services.IMedicamentoService;
-import mascotasApp.models.services.IUsuarioService;
+import mascotasApp.models.services.IMedicamentoService;
 
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -43,5 +42,32 @@ public class MedicamentoRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Medicamento create(@RequestBody Medicamento medicamento){			
 		return medicamentoService.save(medicamento);		
+	}
+	
+	@GetMapping("/medicamentos")
+	public List<Medicamento> index(){
+		return medicamentoService.findAll();
+	}
+	
+	@GetMapping("/medicamentos/{id}")
+	public Medicamento show(@PathVariable Long id){
+		return medicamentoService.findById(id);
+	}
+	
+		
+	@PutMapping("/medicamentos/{id}")
+	public Medicamento update(@RequestBody Medicamento medicamento, @PathVariable Long id){
+		Medicamento current = medicamentoService.findById(id);
+		
+		current.setNombre(medicamento.getNombre());
+		current.setDescripcion(medicamento.getDescripcion());
+		current.setDosis(medicamento.getDosis());
+		return medicamentoService.save(current);
+	}
+	
+	@DeleteMapping("/medicamentos/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Long id){
+		medicamentoService.delete(id);
 	}
 }

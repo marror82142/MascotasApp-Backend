@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import mascotasApp.models.entity.Mascota;
+import mascotasApp.models.entity.Medicamento;
 import mascotasApp.models.services.IMascotaService;
 
 
@@ -45,6 +46,11 @@ public class MascotaRestController {
 	@GetMapping("/mascotas/{id}")
 	public Mascota show(@PathVariable Long id){
 		return mascotaService.findById(id);
+	}
+	
+	@GetMapping("/mascotas/nombre/{nombre}")
+	public Mascota findByNombre(@PathVariable String nombre){
+		return mascotaService.findByNombre(nombre);
 	}
 	
 	

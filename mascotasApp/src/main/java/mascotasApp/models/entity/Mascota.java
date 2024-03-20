@@ -28,11 +28,11 @@ public class Mascota implements Serializable {
 	private String edad;
 	private String peso;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cliente", referencedColumnName = "cedula")
 	private Usuario cliente;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "medicamento", referencedColumnName = "id")
 	private Medicamento medicamento;
 

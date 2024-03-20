@@ -38,7 +38,7 @@ public class MedicamentoRestController {
 	@Autowired
 	private IMedicamentoService medicamentoService;
 	
-	@PostMapping("/medicamento")
+	@PostMapping("/medicamentos")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Medicamento create(@RequestBody Medicamento medicamento){			
 		return medicamentoService.save(medicamento);		
@@ -50,8 +50,8 @@ public class MedicamentoRestController {
 	}
 	
 	@GetMapping("/medicamentos/{id}")
-	public Medicamento show(@PathVariable Long id){
-		return medicamentoService.findById(id);
+	public Medicamento show(@PathVariable String id){
+		return medicamentoService.findByNombre(id);
 	}
 	
 		

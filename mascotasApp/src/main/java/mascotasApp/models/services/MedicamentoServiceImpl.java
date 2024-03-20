@@ -41,9 +41,10 @@ public class MedicamentoServiceImpl implements IMedicamentoService {
 	public void delete(Long id) {
 		medicamentoDao.deleteById(id);
 	}
-	
+
+	@Override
 	@Transactional
-	public Medicamento findByNombre(String nombre, String apellidos) {
+	public Medicamento findByNombre(String nombre) {
 		List<Medicamento> listaUsuarios = (List<Medicamento>) medicamentoDao.findAll();
 		for(int i = 0; i < listaUsuarios.size(); i++) {
 			if(listaUsuarios.get(i).getNombre().equals(nombre)){

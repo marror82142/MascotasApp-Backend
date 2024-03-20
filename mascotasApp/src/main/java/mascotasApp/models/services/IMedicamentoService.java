@@ -12,5 +12,8 @@ public interface IMedicamentoService {
 	
 	public Medicamento findById(Long id);
 	
+
+	public Medicamento findByNombre(String nombre);
+	
 	public void delete(Long id);
 }
